@@ -1,0 +1,12 @@
+from selene import browser, have, be
+
+def test_successful_login():
+    browser.open('https://demowebshop.tricentis.com')
+    browser.element('.ico-login').click()
+
+    browser.element('#Email').type('vironika_@mail.ru')
+    browser.element('#Password').type('123456')
+    browser.element('.login-button').click()
+
+    browser.element('.header .account').should(have.exact_text('vironika_@mail.ru'))
+    browser.element('.ico-logout').should(be.visible)
